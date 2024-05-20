@@ -13,7 +13,38 @@ CREATE TABLE "user" (
     "friends_list" VARCHAR (100)
 );
 
+--seed data for user table
 INSERT INTO "user" ("username", "password", "first_name", "pronouns") 
 VALUES
 ('usertest', 'passwordtest', 'first name', 'she/they');
 
+CREATE TABLE "reviews"(
+	"id" SERIAL PRIMARY KEY,
+	"book_title" VARCHAR (100),
+	"book_author" VARCHAR (100),
+	"genre" VARCHAR (100),
+	"rating" INTEGER,
+	"review_input" VARCHAR (1000), 
+	"review_timestamp" TIMESTAMP
+	);
+
+--seed data for reviews table
+INSERT INTO "reviews" ("book_title", "book_author", "genre", 	"rating", "review_input")
+VALUES
+	('A Court of Thorns and Roses', 'Sarah J. Maas', 'fantasy', 5, 'If tamlin has no haters I am dead.');
+
+CREATE TABLE "review_comments"(
+	"id" SERIAL PRIMARY KEY,
+	"user_id" int REFERENCES "user",
+	"review_id" int REFERENCES "reviews",
+	"comment_input" VARCHAR (500),
+	"comment_timestamp" TIMESTAMP
+	); 
+	
+CREATE TABLE "review_likes"(
+	"id" SERIAL PRIMARY KEY,
+	"user_id" int REFERENCES "user",
+	"review_id" int REFERENCES "reviews"
+	);
+	
+--STRETCH friends_list table
