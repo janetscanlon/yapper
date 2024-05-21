@@ -19,6 +19,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import ReviewFeed from '../ReviewFeedPage/ReviewFeed';
 
 import './App.css';
 
@@ -67,6 +68,14 @@ function App() {
             path="/profile"
           >
             <ProfilePage />
+          </ProtectedRoute>
+
+          {/* protected route for the ProfilePage */}
+          <ProtectedRoute
+            exact
+            path="/feed"
+          >
+            <ReviewFeed />
           </ProtectedRoute>
 
 

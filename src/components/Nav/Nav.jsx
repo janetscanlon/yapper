@@ -31,15 +31,16 @@ function Nav() {
             <Link className="navLink" to="/profile">
               Profile
             </Link>
-           
+
+            <Link className="navLink" to="/feed">
+              Home Feed
+            </Link>
+            
+           <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
-
-        <LogOutButton className="navLink" />
+        
+        
       </div>
     </div>
   );
