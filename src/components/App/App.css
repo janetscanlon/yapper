@@ -5,8 +5,10 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'inter', sans-serif;
   margin: 0px;
+  background-color: rgba(191, 190, 228, 1);
+  text-align: center;
 }
 
 img {
@@ -27,13 +29,15 @@ Button
 -------------------------------------------------------------------------------- */
 
 .btn {
-  display: inline-block;
+  
+  display: block;
+  margin: auto;
   padding: 10px 20px;
-  border-color: #014041;
-  border-width: 1px 1px 3px;
+  border-color: rgb(213, 210, 210);
+  border-width: 1px 1px 1px;
   border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
+  background-color: rgba(238, 238, 238, 1);
+  color: #000000;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -55,7 +59,8 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: rgba(118, 115, 115, 0.443);
+  color: white;
   text-decoration: none;
 }
 
@@ -63,17 +68,17 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px rgba(103, 116, 131, 1);
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  color: rgba(238, 238, 238, 1);
 }
 
 .btn_asLink:hover {
   background-color: transparent;
   border-color: #008183;
-  color: #008183;
+  color: rgba(238, 238, 238, 1);
 }
 
 /* --------------------------------------------------------------------------------
@@ -96,12 +101,15 @@ Form Treatment
 -------------------------------------------------------------------------------- */
 
 .formPanel {
+  font-style: italic;
+  
   box-sizing: border-box;
   width: 400px;
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  background-color: #efefef;
+  background-color:  rgba(238, 238, 238, 0.443);
+  
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }

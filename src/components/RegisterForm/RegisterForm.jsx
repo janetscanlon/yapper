@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+//import MUI components/libraries
+import { Input } from '@mui/base/Input';
 
 
 function RegisterForm() {
