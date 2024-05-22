@@ -8,8 +8,19 @@ function* fetchReviews() {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true,
         };
+
+        // ^^ check and see if the user is logged in, and will return their information 
+        // from the server session (req.user)
+        console.log('in fetch Reviews!')
+        const response = yield axios.get('/api/reviews', config)
+
+        yield put({ type: 'SET_REVIEWS', payload: response.ddata})
+    }   catch(error) {
+        console.log('User get reviews failed', error)
     }
 }
+
+
 
 
 function* reviewsSaga() {
