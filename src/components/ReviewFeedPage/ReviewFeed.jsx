@@ -19,9 +19,8 @@ function ReviewFeed() {
         </h1>
         <h3>
             Review Post component here
-            <ReviewPost/>
         </h3>
-        
+        <ReviewPost/>
         </div>
     )
 }
