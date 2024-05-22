@@ -1,6 +1,6 @@
 const reviewsReducer = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_REVIEW':
+        case "GET_REVIEWS":
           return action.payload;
         default:
           return state;
