@@ -11,10 +11,10 @@ function* fetchReviews() {
 
         // ^^ check and see if the user is logged in, and will return their information 
         // from the server session (req.user)
-        console.log('in fetch Reviews!')
+
         const response = yield axios.get('/api/reviews', config)
 
-        yield put({ type: 'SET_REVIEWS', payload: response.ddata})
+        yield put({ type: 'SET_REVIEWS', payload: response.data})
     }   catch(error) {
         console.log('User get reviews failed', error)
     }

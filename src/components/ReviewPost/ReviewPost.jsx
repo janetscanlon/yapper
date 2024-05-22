@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 function ReviewPost() {
 
     return (
-        <h2>Review Post </h2>
+        <h3>Review Post</h3>
 
     )
 }
