@@ -32,7 +32,6 @@ function* addReview(action) {
           // from the server session (req.user)
 
        const response = yield axios.post('/api/reviews', action.payload, config)
-          //! figure this out lol why isn't my 'SET_REVIEWS' running here ? 
        yield put({type: 'GET_REVIEWS'})
         } catch (error) {
         console.log('Error with add Review:', error)

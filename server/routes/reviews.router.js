@@ -30,14 +30,20 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const reviewInput = req.body.reviewInput
   
   const sqlText = `INSERT INTO "reviews" 
-                    ("book_title", "book_author", "genre", 	"rating", "review_input")
+                    ("book_title", "book_author", "genre", 	"rating", "review_input", "review_timestamp")
                         VALUES
-                          ($1, $2, $3, $4, $5);`;
+                          ($1, $2, $3, $4, $5, current_timestamp);`;
   
   const sqlValues = [bookTitle, bookAuthor, genreInput, ratingInput, reviewInput]
 
   pool.query(sqlText, sqlValues)
-  
+    .then((dbRes) => {
+      res.sendStatus(201)
+    })
+    .catch((dbError) => {
+      console.log('Error adding new review', dbError)
+      res.sendStatus(500)
+    })
 });
 
 module.exports = router;
