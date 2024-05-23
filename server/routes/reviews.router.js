@@ -21,8 +21,23 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-  // POST route code here
+router.post('/', rejectUnauthenticated, (req, res) => {
+  console.log('in reviews router post route!')
+  const bookTitle = req.body.bookTitle
+  const bookAuthor = req.body.bookAuthor
+  const genreInput = req.body.genreInput
+  const ratingInput = req.body.ratingInput
+  const reviewInput = req.body.reviewInput
+  
+  const sqlText = `INSERT INTO "reviews" 
+                    ("book_title", "book_author", "genre", 	"rating", "review_input")
+                        VALUES
+                          ($1, $2, $3, $4, $5);`;
+  
+  const sqlValues = [bookTitle, bookAuthor, genreInput, ratingInput, reviewInput]
+
+  pool.query(sqlText, sqlValues)
+  
 });
 
 module.exports = router;

@@ -23,11 +23,11 @@ function NewReviewPage () {
         dispatch({
             type: 'ADD_REVIEW',
             payload: {
-                book_title: bookTitle,
-                book_author: bookAuthor,
-                genre: genreInput,
-                rating: ratingInput,
-                review_input: reviewInput,
+                bookTitle,
+                bookAuthor,
+                genreInput,
+                ratingInput,
+                reviewInput,
             }
         })
     }
