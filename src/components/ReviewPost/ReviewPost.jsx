@@ -3,10 +3,18 @@ import { useSelector } from 'react-redux'
 //! after backend stufff you should be able to hook 
 //! into the review info reducer and here and render hehe 
 
-function ReviewPost() {
+//mui components 
+import Box from '@mui/material/Box'
+import { Typography } from '@mui/material'
+
+function ReviewPost({review}) {
 
     return (
-        <h3>Review Post</h3>
+        <Box>
+            <Typography variant='body1'>
+                {review.book_title} by {review.book_author}
+            </Typography>
+        </Box>
 
     )
 }

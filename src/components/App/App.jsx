@@ -14,12 +14,12 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import ReviewFeed from '../ReviewFeedPage/ReviewFeed';
+import NewReviewPage from '../NewReviewPage/NewReviewPage';
 
 import './App.css';
 
@@ -53,13 +53,7 @@ function App() {
             Visiting localhost:5173/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:5173/user */}
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path="/user"
-          >
-            <UserPage />
-          </ProtectedRoute>
+
 
           {/* protected route for the ProfilePage */}
           <ProtectedRoute
@@ -78,6 +72,15 @@ function App() {
             <ReviewFeed />
           </ProtectedRoute>
 
+          {/* protected route for the NewReviewPage */}
+          <ProtectedRoute
+            exact
+            path="/NewReview"
+          >
+            <NewReviewPage />
+          </ProtectedRoute>
+
+
 
           <Route
             exact
@@ -86,7 +89,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/feed" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -100,7 +103,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/feed" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -114,7 +117,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/feed" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ReviewPost from '../ReviewPost/ReviewPost'
 
+//mui componenets
+import Box from '@mui/material/Box';
+
 
 
 function ReviewFeed() {
@@ -14,7 +17,7 @@ function ReviewFeed() {
 
 
     return(
-        <div>
+        <Box sx={{m: 2}}>
         <h1> 
             Review Feed Page!
         </h1>
@@ -23,14 +26,12 @@ function ReviewFeed() {
         </h3>
         {reviews.map(review => {
             return(
-                <div key={review.id}>
-                    <h3>{review.book_title} by {review.book_author}</h3>
-                    <p>{review.review_input}</p>
-                </div>
+            <ReviewPost key={review.id} review={review}/>
+            
             )
         })}
-        <ReviewPost/>
-        </div>
+        
+        </Box>
     )
 }
 
