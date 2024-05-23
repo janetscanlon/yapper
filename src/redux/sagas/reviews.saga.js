@@ -39,10 +39,25 @@ function* addReview(action) {
     }
 }
 
+function* deleteReview(action) {
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+          }
+        
+        const response = yield axios.delete(`/api/reviews/${action.payload}`)
+        yield put({type: 'GET_REVIEWS'})
+        } catch(error) {
+            console.log('Error with Delete Review:', error)
+        }
+}
+
 
 function* reviewsSaga() {
     yield takeLatest('GET_REVIEWS', fetchReviews)
     yield takeLatest('ADD_REVIEW', addReview)
+    yield takeLatest('DELETE_REVIEW', deleteReview)
 }
 
 export default reviewsSaga
