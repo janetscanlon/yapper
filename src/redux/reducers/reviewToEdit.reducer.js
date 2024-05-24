@@ -7,4 +7,5 @@ const reviewToEdit = (state = {}, action) => {
       }
 }
 
+//add listeners for all of the edited inputs 
 export default reviewToEdit
