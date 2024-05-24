@@ -20,6 +20,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import ReviewFeed from '../ReviewFeedPage/ReviewFeed';
 import AddReviewPage from '../AddReviewPage/AddReviewForm';
+import ReviewEditForm from '../ReviewFeedPage/ReviewEditForm';
 
 import './App.css';
 
@@ -80,6 +81,14 @@ function App() {
             <AddReviewPage />
           </ProtectedRoute>
 
+
+          {/* protected route for the ReviewEditForm */}
+          <ProtectedRoute
+            exact
+            path="/edit_form/:review_id"
+          >
+            <ReviewEditForm />
+          </ProtectedRoute>
 
 
           <Route

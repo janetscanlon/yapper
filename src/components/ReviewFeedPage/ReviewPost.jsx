@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 //! after backend stufff you should be able to hook 
 //! into the review info reducer and here and render hehe 
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 //mui components 
 import Box from '@mui/material/Box'
@@ -12,6 +13,7 @@ import Button from '@mui/material/Button'
 
 function ReviewPost({review}) {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const deleteReview = () => {
         console.log('delete clicked! Review id is:', review.id)
@@ -25,6 +27,8 @@ function ReviewPost({review}) {
         console.log('edit review clicked! Review id is:', review.id)
         //route to a new edit form component and work on route params
         // to send the review id
+        //send the user to the edit form with the review id
+        history.push(`/edit_form/${review.id}`)
     }
     
     return (
