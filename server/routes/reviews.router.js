@@ -57,4 +57,23 @@ router.delete('/:id', rejectUnauthenticated, (req,res) => {
     })
 });
 
+//EDIT FORM ROUTE
+
+//GET review to edit ROUTE 
+router.get('/:id', (req,res) => {
+  const sqlText = `SELECT * FROM "reviews"
+                    WHERE id = $1;`;
+
+  pool.query(sqlText, [req.params.id])
+    .then((dbRes) => {
+      //get the single object out of the array sent back
+      const singleReview = dbRes.rows[0]
+      res.send(singleReview)
+    })
+    .catch((error) => {
+      console.log('GET api/reviews/:id error:', error)
+      res.sendStatus(500)
+    })
+})
+
 module.exports = router;
