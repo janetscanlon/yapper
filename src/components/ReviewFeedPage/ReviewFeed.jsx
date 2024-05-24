@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import ReviewPost from '../ReviewPost/ReviewPost'
+import ReviewPost from './ReviewPost'
 
 //mui componenets
 import Box from '@mui/material/Box';

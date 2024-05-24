@@ -20,13 +20,26 @@ function ReviewPost({review}) {
             payload: review.id
         })
     }
+
+    const editReview = () => {
+        console.log('edit review clicked! Review id is:', review.id)
+        //route to a new edit form component and work on route params
+        // to send the review id
+    }
     
     return (
         <Box>
-            <Typography variant='body1'>
+            <Typography variant='h6'>
                 {review.book_title} by {review.book_author}
             </Typography>
+            <Typography variant='subtitle1'>
+                Review:
+            </Typography>
+            <Typography variant='subtitle1'>
+            {review.review_input}
+            </Typography>
             <Button onClick={deleteReview} variant='contained'>Delete</Button>
+            <Button onClick={editReview}variant='contained'>Edit</Button>
         </Box>
     )
 }

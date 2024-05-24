@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 
 //import profile info component 
-import ProfileInfo from '../ProfileInfo/ProfileInfo';
+import ProfileInfo from './ProfileInfo'
 
 function ProfilePage() {
 

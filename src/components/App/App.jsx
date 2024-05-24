@@ -19,7 +19,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import ReviewFeed from '../ReviewFeedPage/ReviewFeed';
-import NewReviewPage from '../NewReviewPage/NewReviewPage';
+import AddReviewPage from '../AddReviewPage/AddReviewForm';
 
 import './App.css';
 
@@ -77,7 +77,7 @@ function App() {
             exact
             path="/NewReview"
           >
-            <NewReviewPage />
+            <AddReviewPage />
           </ProtectedRoute>
 
 
