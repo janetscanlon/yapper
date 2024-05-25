@@ -15,6 +15,9 @@ function NewReviewPage () {
     const [ratingInput, setRatingInput] = useState('')
     const [reviewInput, setReviewInput] = useState('')
 
+    //hook into the user reducer
+    //const user = useSelector((store) => store.user)
+
     const dispatch = useDispatch()
 
     const addReview = (event) => {
@@ -28,6 +31,7 @@ function NewReviewPage () {
                 genreInput,
                 ratingInput,
                 reviewInput,
+                //userId: user.id,
             }
         })
         
