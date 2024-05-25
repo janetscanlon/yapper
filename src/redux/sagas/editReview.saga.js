@@ -19,12 +19,28 @@ function* fetchReviewToEdit(action) {
     }
 }
 
+function* updateReview(action) {
+    try{
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+          }
+
+        const editedReview = action.payload 
+        
+        axios.put(`/api/reviews/${editedReview.id}`, editedReview, config)
+        yield put({type: 'GET_REVIEWS'})
+    } catch (error){
+        console.log('UPDATE REVIEW error', error)
+    }
+}
 
 
 
 function* editReviewsSaga() {
     yield takeLatest('FETCH_REVIEW_TO_EDIT', fetchReviewToEdit)
     //ADD YIELD UPDATE_REVIEW HERE 
+    yield takeLatest('UPDATE_REVIEW', updateReview)
 }
 
 

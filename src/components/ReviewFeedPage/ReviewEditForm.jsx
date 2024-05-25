@@ -81,6 +81,8 @@ function ReviewEditForm () {
             type: 'UPDATE_REVIEW',
             payload: reviewToEdit
         })
+        //after the user submits the changes route them back to home feed
+        history.push('/feed')
     }
 
     return (
