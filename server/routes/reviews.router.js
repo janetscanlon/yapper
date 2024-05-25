@@ -24,6 +24,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const genreInput = req.body.genreInput
   const ratingInput = Number(req.body.ratingInput)
   const reviewInput = req.body.reviewInput
+  //const userId = req.user.id
   
   const sqlText = `INSERT INTO "reviews" 
                     ("book_title", "book_author", "genre", 	"rating", "review_input", "review_timestamp")
@@ -75,5 +76,33 @@ router.get('/:id', (req,res) => {
       res.sendStatus(500)
     })
 })
+
+//PUT route for the edited Review 
+router.put*('/:id', (req,res) => {
+  const bookTitle = req.body.book_title
+  const bookAuthor = req.body.book_author
+  const genreInput = req.body.genre
+  const ratingInput = Number(req.body.rating)
+  const reviewInput = req.body.review_input
+
+  console.log('req.body is:', req.body)
+  const idToUpdate = req.params.id 
+  
+  const sqlText = `UPDATE "reviews"
+                      SET "book_title" = $1, "book_author" = $2, "genre" = $3,
+                          "rating" = $4, "review_input" = $5
+                            WHERE id = $6`
+
+  const sqlValues = [bookTitle, bookAuthor, genreInput, ratingInput, reviewInput, idToUpdate]
+  pool.query(sqlText, sqlValues)
+    .then((result) => {
+      res.sendStatus(200)
+    })
+    .catch((error) => {
+      console.log('error in edit review put route:', error)
+      res.sendstatus(500)
+    })
+})
+
 
 module.exports = router;
