@@ -25,13 +25,18 @@ CREATE TABLE "reviews"(
 	"genre" VARCHAR (100),
 	"rating" INTEGER,
 	"review_input" VARCHAR (1000), 
-	"review_timestamp" TIMESTAMP
+	"review_timestamp" TIMESTAMP,
+	"user_id" INT REFERENCES "user" NOT NULL
 	);
+	
+	
+DROP TABLE "reviews" CASCADE;
 
 --seed data for reviews table
-INSERT INTO "reviews" ("book_title", "book_author", "genre", 	"rating", "review_input")
-VALUES
-	('A Court of Thorns and Roses', 'Sarah J. Maas', 'fantasy', 5, 'If tamlin has no haters I am dead.');
+INSERT INTO "reviews" 
+                    ("book_title", "book_author", "genre", 	"rating", "review_input", "review_timestamp", "user_id")
+                        VALUES
+                          ('A Court of Thorns and Roses', 'Sarah J. Maas', 'fantasy', 5, 'If tamlin has no haters I am dead.', current_timestamp, 3);
 
 CREATE TABLE "review_comments"(
 	"id" SERIAL PRIMARY KEY,
@@ -48,3 +53,4 @@ CREATE TABLE "review_likes"(
 	);
 	
 --STRETCH friends_list table
+

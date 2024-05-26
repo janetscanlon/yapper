@@ -14,6 +14,8 @@ import Button from '@mui/material/Button'
 function ReviewPost({review}) {
     const dispatch = useDispatch()
     const history = useHistory()
+    //hook into user reducer
+    const user = useSelector(store => store.user)
 
     const deleteReview = () => {
         console.log('delete clicked! Review id is:', review.id)
@@ -24,7 +26,6 @@ function ReviewPost({review}) {
     }
 
     const editReview = () => {
-        console.log('edit review clicked! Review id is:', review.id)
         //route to a new edit form component and work on route params
         // to send the review id
         //send the user to the edit form with the review id
@@ -42,8 +43,12 @@ function ReviewPost({review}) {
             <Typography variant='subtitle1'>
             {review.review_input}
             </Typography>
-            <Button onClick={deleteReview} variant='contained'>Delete</Button>
-            <Button onClick={editReview}variant='contained'>Edit</Button>
+            {review.user_id === user.id &&
+                <Box>
+                    <Button onClick={deleteReview} variant='contained'>Delete</Button>
+                    <Button onClick={editReview}variant='contained'>Edit</Button>
+                </Box>
+            }
         </Box>
     )
 }
