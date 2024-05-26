@@ -94,57 +94,67 @@ function ReviewEditForm () {
             <FormLabel>Edit Review</FormLabel>
             <Grid container direction={"column"} spacing={5}>
                 <Grid item>
-                    <TextField 
-                        onChange={handleBookTitleChange}
-                        value={reviewToEdit.book_title}
-                        label='Book Title'
-                        type='text' 
-                        variant='filled' 
-                        size='small'>
-                    </TextField>
+                    {reviewToEdit.book_title &&
+                        <TextField 
+                            onChange={handleBookTitleChange}
+                            value={reviewToEdit.book_title}
+                            label='Book Title'
+                            type='text' 
+                            variant='filled' 
+                            size='small'>
+                        </TextField> 
+                    }
                 </Grid>
                 <Grid item>
-                    <TextField 
-                        onChange={handleBookAuthorChange}
-                        value={reviewToEdit.book_author}
-                        label='Book Author'
-                        type='text' 
-                        variant='filled' 
-                        size='small'>
-                    </TextField>
+                    {reviewToEdit.book_author &&
+                        <TextField 
+                            onChange={handleBookAuthorChange}
+                            value={reviewToEdit.book_author}
+                            label='Book Author'
+                            type='text' 
+                            variant='filled' 
+                            size='small'>
+                        </TextField>
+                    }
                 </Grid>
                 <Grid item>
-                    <TextField
-                        onChange={handleBookGenreChange}
-                        value={reviewToEdit.genre}
-                        label='Genre'
-                        type='text' 
-                        variant='filled' 
-                        size='small'>
-                    </TextField>
+                    {reviewToEdit.genre &&
+                        <TextField
+                            onChange={handleBookGenreChange}
+                            value={reviewToEdit.genre}
+                            label='Genre'
+                            type='text' 
+                            variant='filled' 
+                            size='small'>
+                        </TextField>
+                    }
                 </Grid>
                 <Grid item>
-                    <TextField
-                        onChange={handleBookRatingChange}
-                        value={reviewToEdit.rating}
-                        label='Rating 1-10'
-                        type='text'
-                        inputProps={{min:0, max:10}} 
-                        variant='filled' 
-                        size='normal'>
-                    </TextField>
+                    {reviewToEdit.rating &&
+                        <TextField
+                            onChange={handleBookRatingChange}
+                            value={reviewToEdit.rating}
+                            label='Rating 1-10'
+                            type='text'
+                            inputProps={{min:0, max:10}} 
+                            variant='filled' 
+                            size='normal'>
+                        </TextField>
+                    }
                 </Grid>
                 <Grid item>
-                    <TextField
-                        onChange={handleBookReviewInputChange}
-                        value={reviewToEdit.review_input}
-                        label='Review'
-                        multiline
-                        rows={5}
-                        type='text' 
-                        variant='filled' 
-                        size='small'>
-                    </TextField>
+                    {reviewToEdit.review_input &&
+                        <TextField
+                            onChange={handleBookReviewInputChange}
+                            value={reviewToEdit.review_input}
+                            label='Review'
+                            multiline
+                            rows={5}
+                            type='text' 
+                            variant='filled' 
+                            size='small'>
+                        </TextField>
+                    }
                 </Grid>
                 
             <Grid item>
