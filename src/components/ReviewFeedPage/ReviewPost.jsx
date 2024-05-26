@@ -16,6 +16,7 @@ function ReviewPost({review}) {
     const history = useHistory()
     //hook into user reducer
     const user = useSelector(store => store.user)
+    const likes = useSelector(store => store.likes)
 
     //fetch all likes where review_id when the review mounts 
     useEffect(() => {
@@ -23,7 +24,8 @@ function ReviewPost({review}) {
             type: 'FETCH_REVIEW_LIKES',
             payload: review.id
         })
-    })
+        console.log('likes is:', likes)
+    }, [])
 
     const deleteReview = () => {
         console.log('delete clicked! Review id is:', review.id)
@@ -54,7 +56,7 @@ function ReviewPost({review}) {
             <div>
                 <Button>Like</Button>
                 <Typography variant='body2'>
-                    This post has 0 likes
+                    This post has likes
                 </Typography>
                 <Button>Comment</Button>
             </div>

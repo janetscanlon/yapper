@@ -3,11 +3,14 @@ const pool = require('../modules/pool');
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const router = express.Router();
 
+//* ----------------------- REVIEWS CRUD ROUTES ------------------------------------//*
+
 //GET ROUTE
 router.get('/', rejectUnauthenticated, (req, res) => {
   const sqlText = `
             SELECT * FROM "reviews";
             `;
+
   pool.query(sqlText)
     .then((result) => { res.send(result.rows) })
     .catch((error) => {
@@ -104,5 +107,23 @@ router.put('/:id', (req,res) => {
     })
 })
 
+//* ----------------------- REVIEWS CRUD ROUTES ------------------------------------//*
+
+
+//* ----------------------- REVIEWS LIKES ROUTES ------------------------------------//*
+
+//GET LIKES ROUTE 
+router.get(`/likeid:/:id`, rejectUnauthenticated, (req,res) => {
+
+  const sqlText = `SELECT * from "review_likes"
+	                  WHERE "review_id" = $1;`;
+  
+  pool.query(sqlText, [req.params.id])
+    .then((result) => { res.send(result.rows)})
+    .catch((error) => {
+      console.log('GET /:id review likes error:', error)
+      res.sendstatus(500)
+    })
+})
 
 module.exports = router;

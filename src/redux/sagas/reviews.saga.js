@@ -46,7 +46,7 @@ function* deleteReview(action) {
             withCredentials: true,
           }
         
-        const response = yield axios.delete(`/api/reviews/${action.payload}`)
+        const response = yield axios.delete(`/api/reviews/${action.payload}`, config)
         yield put({type: 'GET_REVIEWS'})
         } catch(error) {
             console.log('Error with Delete Review:', error)
