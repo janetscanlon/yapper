@@ -78,7 +78,7 @@ router.get('/:id', (req,res) => {
 })
 
 //PUT route for the edited Review 
-router.put*('/:id', (req,res) => {
+router.put('/:id', (req,res) => {
   const bookTitle = req.body.book_title
   const bookAuthor = req.body.book_author
   const genreInput = req.body.genre
