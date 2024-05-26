@@ -24,14 +24,14 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const genreInput = req.body.genreInput
   const ratingInput = Number(req.body.ratingInput)
   const reviewInput = req.body.reviewInput
-  //const userId = req.user.id
+  const userId = req.user.id
   
   const sqlText = `INSERT INTO "reviews" 
-                    ("book_title", "book_author", "genre", 	"rating", "review_input", "review_timestamp")
+                    ("book_title", "book_author", "genre", 	"rating", "review_input", "review_timestamp", "user_id")
                         VALUES
-                          ($1, $2, $3, $4, $5, current_timestamp);`;
+                          ($1, $2, $3, $4, $5, current_timestamp, $6);`;
   
-  const sqlValues = [bookTitle, bookAuthor, genreInput, ratingInput, reviewInput]
+  const sqlValues = [bookTitle, bookAuthor, genreInput, ratingInput, reviewInput, userId]
 
   pool.query(sqlText, sqlValues)
     .then((dbRes) => {
