@@ -51,7 +51,7 @@ router.delete('/:id', rejectUnauthenticated, (req,res) => {
                     WHERE id= $1;`;
   
   pool.query(sqlText, [req.params.id])
-    .then((result) => {res.send(result.rows)})
+    .then((result) => { res.sendStatus(201) })
     .catch((error) => {
       console.log('Error in DELETE /:id reviews', error)
       res.sendStatus(500)
