@@ -103,7 +103,7 @@ router.put('/:id', (req,res) => {
     })
     .catch((error) => {
       console.log('error in edit review put route:', error)
-      res.sendstatus(500)
+      res.sendStatus(500)
     })
 })
 
@@ -122,7 +122,26 @@ router.get(`/likeid:/:id`, rejectUnauthenticated, (req,res) => {
     .then((result) => { res.send(result.rows)})
     .catch((error) => {
       console.log('GET /:id review likes error:', error)
-      res.sendstatus(500)
+      res.sendStatus(500)
+    })
+})
+
+//POST LIKES ADD A LIKE ROUTE 
+router.post(`/likeid:/:id`, rejectUnauthenticated, (req,res) => {
+  const sqlText = `INSERT INTO "review_likes"
+	                  ("user_id", "review_id")
+                      VALUES 
+                        ($1,$2);`
+  
+  const sqlValues = [req.user.id, req.params.id]
+
+  pool.query(sqlText, sqlValues)
+    .then((dbRes) => {
+      res.sendStatus(201)
+    })
+    .catch((error) => {
+      console.log('POST add like /:id error:', error)
+      res.sendStatus(500)
     })
 })
 

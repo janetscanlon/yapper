@@ -1,7 +1,5 @@
 import React, { UseState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-//! after backend stufff you should be able to hook 
-//! into the review info reducer and here and render hehe 
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
@@ -16,17 +14,20 @@ function ReviewPost({review}) {
     const history = useHistory()
     //hook into user reducer
     const user = useSelector(store => store.user)
-    const likes = useSelector(store => store.likes)
+    
 
     //fetch all likes where review_id when the review mounts 
+    // I don't want it to just load once though I need 'FETCH_REVIEW_LIKES'
+    //to load everytime a like is added too
     useEffect(() => {
         dispatch({
             type: 'FETCH_REVIEW_LIKES',
             payload: review.id
         })
-        console.log('likes is:', likes)
     }, [])
 
+    const likes = useSelector(store => store.likes)
+    console.log('likes is:', likes)
     const deleteReview = () => {
         console.log('delete clicked! Review id is:', review.id)
         dispatch({
@@ -42,6 +43,13 @@ function ReviewPost({review}) {
         history.push(`/edit_form/${review.id}`)
     }
     
+    const addLike = () => {
+        dispatch({
+            type: 'ADD_LIKE',
+            payload: review.id
+        })
+    }
+
     return (
         <Box>
             <Typography variant='h6'>
@@ -54,9 +62,9 @@ function ReviewPost({review}) {
             {review.review_input}
             </Typography>
             <div>
-                <Button>Like</Button>
+                <Button onClick={addLike}>Like</Button>
                 <Typography variant='body2'>
-                    This post has likes
+                    This post has {likes.length} likes
                 </Typography>
                 <Button>Comment</Button>
             </div>
