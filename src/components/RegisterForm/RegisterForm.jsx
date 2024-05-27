@@ -77,6 +77,7 @@ function RegisterForm() {
           Pronouns:
         </label>
           <select onChange={(event) => setPronouns(event.target.value)} name="pronouns" id="pronouns">
+            <option value=""></option>
             <option value="She/Her">She/Her</option>
             <option value="He/Him">He/Him</option>
             <option value="She/They">She/They</option>
