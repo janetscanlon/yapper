@@ -47,21 +47,19 @@ function ProfileInfo() {
     }
     return(
         <styledBox>
-            <Container classes='profileInfo'>
-            <Typography variant='h4'>{user.first_name}</Typography>
-            <Typography variant='caption'>{user.pronouns}</Typography>
-            <Typography variant='subtitle2'>
-                You've written {numberOfReviews.length} reviews
-                </Typography>
-                {numberOfReviews.length === 0 &&
+            <Container class='profileInfo'>
+                <Typography variant='h4'>{user.first_name}</Typography>
+                <Typography variant='caption'>{user.pronouns}</Typography>
                 <Typography variant='subtitle2'>
-                Get started by adding a review
-                </Typography>}
-            
-            <Button onClick={toNewReviewPage} variant='contained'>New Review</Button>
-            </Container>
-            <Container>
-                <Typography>Your Friends</Typography>
+                    You've written {numberOfReviews.length} reviews
+                    </Typography>
+                    {numberOfReviews.length === 0 &&
+                    <Typography variant='subtitle2'>
+                    Get started by adding a review
+                    </Typography>}
+                
+                <Button onClick={toNewReviewPage} variant='contained'>New Review</Button>
+                    <Typography>Your Friends</Typography>
             </Container>
         </styledBox>
     )
