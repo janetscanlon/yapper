@@ -3,13 +3,21 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 //mui components
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box'
+import { Typography } from '@mui/material';
+import Container from '@mui/material/Container';
+import { styled } from '@mui/system';
 
+import './ProfileInfo.css'
 
 function ProfileInfo() {
         const user = useSelector((store) => store.user)
         const reviews = useSelector((store) => store.reviews)
         const history = useHistory()
         const dispatch = useDispatch()
+        const styledBox = styled('Box')({
+            textAlign: 'right'
+        })
 
     useEffect(() => {
         dispatch({ type: 'GET_REVIEWS'})
@@ -38,21 +46,24 @@ function ProfileInfo() {
  
     }
     return(
-        <div>
-            <h3>Hi, {user.first_name}!</h3>
-            <p>{user.pronouns}</p>
-            <p>
-                You've written {numberOfReviews.length} reviews!
-                </p>
+        <styledBox>
+            <Container classes='profileInfo'>
+            <Typography variant='h4'>{user.first_name}</Typography>
+            <Typography variant='caption'>{user.pronouns}</Typography>
+            <Typography variant='subtitle2'>
+                You've written {numberOfReviews.length} reviews
+                </Typography>
                 {numberOfReviews.length === 0 &&
-                <p>
+                <Typography variant='subtitle2'>
                 Get started by adding a review
-                </p>}
+                </Typography>}
             
-            <Button onClick={toNewReviewPage}variant='contained'>New Review</Button>
-            
-            <p>Your Friends</p>
-        </div>
+            <Button onClick={toNewReviewPage} variant='contained'>New Review</Button>
+            </Container>
+            <Container>
+                <Typography>Your Friends</Typography>
+            </Container>
+        </styledBox>
     )
 }
 
