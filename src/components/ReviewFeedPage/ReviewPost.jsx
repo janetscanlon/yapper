@@ -42,6 +42,8 @@ function ReviewPost({review}) {
             </Typography>
             <Typography variant='subtitle1'>
             {review.review_input}
+            
+            <div>{review.like_count} likes</div>
             </Typography>
             {review.user_id === user.id &&
                 <Box>
