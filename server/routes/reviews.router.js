@@ -3,6 +3,8 @@ const pool = require('../modules/pool');
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const router = express.Router();
 
+//** ----------------------------------------------------------------- MVP / CRUD ROUTES -------------------------------------------------------------------------------------------------*/
+
 //GET ROUTE
 router.get('/', rejectUnauthenticated, (req, res) => {
   const sqlText = `
@@ -94,7 +96,7 @@ router.get('/:id', (req,res) => {
     })
 })
 
-//PUT route for the edited Review 
+//PUT ROUTE for the edited Review 
 router.put('/:id', (req,res) => {
   const bookTitle = req.body.book_title
   const bookAuthor = req.body.book_author
@@ -120,6 +122,10 @@ router.put('/:id', (req,res) => {
       res.sendstatus(500)
     })
 })
+
+//** ----------------------------------------------------------------- MVP / CRUD ROUTES -------------------------------------------------------------------------------------------------*/
+
+//** ----------------------------------------------------------------- STRETCH / LIKE / COMMENTS / FOLLOW ROUTES -------------------------------------------------------------------------*/
 
 //POST ROUTE FOR LIKES 
 router.post(`/likeid:/:id`, rejectUnauthenticated, (req,res) => {
