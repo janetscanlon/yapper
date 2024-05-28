@@ -32,6 +32,13 @@ function ReviewPost({review}) {
         history.push(`/edit_form/${review.id}`)
     }
     
+    const addLike = () => {
+        dispatch({
+            type: 'ADD_LIKE',
+            payload: review.id
+        })
+    }
+    
     return (
         <Box>
             <Typography variant='h6'>
@@ -42,8 +49,10 @@ function ReviewPost({review}) {
             </Typography>
             <Typography variant='subtitle1'>
             {review.review_input}
-            
-            <div>{review.like_count} likes</div>
+            <div>
+                {review.like_count} likes
+            </div>
+            <Button onClick={addLike}>Like</Button>
             </Typography>
             {review.user_id === user.id &&
                 <Box>

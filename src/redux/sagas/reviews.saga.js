@@ -53,11 +53,23 @@ function* deleteReview(action) {
         }
 }
 
+function* addLike(action) {
+    try{
+        const response = yield axios.post(`api/reviews/likeid:/${action.payload}`)
+        yield put({type: 'GET_REVIEWS'})
+    } catch(error) {
+        console.log('error adding like:', error)
+    }
+}
+
 
 function* reviewsSaga() {
+   
     yield takeLatest('GET_REVIEWS', fetchReviews)
     yield takeLatest('ADD_REVIEW', addReview)
     yield takeLatest('DELETE_REVIEW', deleteReview)
+    //review likes! 
+    yield takeLatest('ADD_LIKE', addLike)
 }
 
 export default reviewsSaga

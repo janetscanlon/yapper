@@ -121,5 +121,23 @@ router.put('/:id', (req,res) => {
     })
 })
 
+//POST ROUTE FOR LIKES 
+router.post(`/likeid:/:id`, rejectUnauthenticated, (req,res) => {
+  const sqlText = `INSERT INTO "review_likes"
+	                  ("user_id", "review_id")
+                      VALUES 
+                        ($1,$2);`
+  
+  const sqlValues = [req.user.id, req.params.id]
+
+  pool.query(sqlText, sqlValues)
+    .then((dbRes) => {
+      res.sendStatus(201)
+    })
+    .catch((error) => {
+      console.log('POST add like /:id error:', error)
+      res.sendStatus(500)
+    })
+})
 
 module.exports = router;
