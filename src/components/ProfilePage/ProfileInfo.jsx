@@ -47,7 +47,7 @@ function ProfileInfo() {
     }
     return(
         <styledBox>
-            <Container class='profileInfo'>
+            <Container className='profileInfo'>
                 <Typography variant='h4'>{user.first_name}</Typography>
                 <Typography variant='caption'>{user.pronouns}</Typography>
                 <Typography variant='subtitle2'>

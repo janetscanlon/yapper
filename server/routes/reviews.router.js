@@ -6,7 +6,22 @@ const router = express.Router();
 //GET ROUTE
 router.get('/', rejectUnauthenticated, (req, res) => {
   const sqlText = `
-            SELECT * FROM "reviews";
+                SELECT
+                "reviews"."id",
+                  "reviews"."user_id",
+                  "reviews".book_author,
+                  "reviews".book_title,
+                  "reviews".genre,
+                  "reviews".review_input,
+                  "reviews".review_timestamp,
+                  "reviews".rating,
+                  COUNT("review_likes".id) AS "like_count"
+                FROM "reviews"
+                  INNER JOIN "review_likes"
+                  ON "reviews"."id" = "review_likes"."review_id"
+                  
+                  GROUP BY "reviews".id
+                  ORDER BY "reviews".id;
             `;
   pool.query(sqlText)
     .then((result) => { res.send(result.rows) })

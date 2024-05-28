@@ -10,7 +10,7 @@ import { Typography } from '@mui/material';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 function Footer() {
-  return <Typography variant='subtitle1' class='profileInfo'>&copy; Yapper 2024</Typography>;
+  return <Typography variant='subtitle1' className='profileInfo'>&copy; Yapper 2024</Typography>;
 }
 
 export default Footer;
