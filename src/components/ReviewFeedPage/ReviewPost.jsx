@@ -51,7 +51,7 @@ function ReviewPost({review}) {
     const bull = (
         <Box
           component="span"
-          sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+          sx={{ display: "inline-block", mx: "10px", transform: "scale(0.8)" }}
         >
           •
         </Box>
@@ -59,8 +59,8 @@ function ReviewPost({review}) {
 
 
     return (
-        <div style={{ margin: "10%"}}>
-            <Card sx={{ maxWidth: 600 }}>
+        <div style={{ margin: "10%", justifyContent:'center'}}>
+            <Card sx={{ maxWidth: 500}}>
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: 'darkolivegreen' }} aria-label="yapcircle">
@@ -100,7 +100,6 @@ function ReviewPost({review}) {
                         <FavoriteIcon onClick={addLike}/>
                     </IconButton>
                 </CardActions>
-               
             </Card>
         </div>
     )
