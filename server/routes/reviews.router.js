@@ -165,4 +165,12 @@ router.delete(`/reviewid:/:id`, rejectUnauthenticated, (req,res) => {
       res.sendStatus(500)
     })
 })
+
+
+//GET ROUTE for SEARCH USERS Feature 
+router.get(`/search`, rejectUnauthenticated, (req,res) => {
+  const sqlText = `
+                    SELECT `
+})
+
 module.exports = router;
