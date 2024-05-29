@@ -81,7 +81,7 @@ function ReviewPost({review}) {
                         </IconButton>
                         }
                     titleTypographyProps={{variant:'h5'}}
-                    title={user.first_name} 
+                    title={review.user_firstName} 
                     subheader="is yapping!"
                 />
                 <CardContent>
