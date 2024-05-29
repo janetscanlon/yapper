@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 //mui components 
 import Box from '@mui/material/Box'
-import { Typography } from '@mui/material'
+import { Typography, Grid, colors } from '@mui/material'
 import Button from '@mui/material/Button'
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -17,7 +17,9 @@ import Avatar from '@mui/material/Avatar'
 import IconButton from '@mui/material/IconButton'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import MoreVertIcon from "@mui/icons-material/MoreVert"
-import { grey } from "@mui/material/colors"
+import { red } from '@mui/material/colors'
+import { Colorize } from '@mui/icons-material'
+
 
 
 function ReviewPost({review}) {
@@ -46,21 +48,14 @@ function ReviewPost({review}) {
             type: 'ADD_LIKE',
             payload: review.id
         })
-    }
 
-    const bull = (
-        <Box
-          component="span"
-          sx={{ display: "inline-block", mx: "10px", transform: "scale(0.8)" }}
-        >
-          •
-        </Box>
-      );
+        
+    }
 
 
     return (
-        <div style={{ margin: "10%", justifyContent:'center'}}>
-            <Card sx={{ maxWidth: 500}}>
+        <div style={{ margin: "10%", paddingRight: 0 }}>
+            <Card sx={{minWidth: 300, p: 2, margin: 2, maxWidth: 700 }}>
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: 'darkolivegreen' }} aria-label="yapcircle">
@@ -72,21 +67,23 @@ function ReviewPost({review}) {
                             <MoreVertIcon />
                         </IconButton>
                         }
+                    titleTypographyProps={{variant:'h5'}}
                     title={user.first_name} 
                     subheader="is yapping!"
                 />
                 <CardContent>
+                    <Typography variant='caption'>
+                        recently read:
+                    </Typography>
                     <Typography variant='h6'>
                         {review.book_title} by {review.book_author}
                     </Typography>
-                    <Typography variant='subtitle1'>
-                        Review:
+                    <Typography variant='body2'>
+                        rating: {review.rating}/10
                     </Typography>
                     <Typography variant='subtitle1'>
                     {review.review_input}
-                    <div>
-                        {review.like_count} likes
-                    </div>
+                    
                     </Typography>
                 </CardContent>
                 {review.user_id === user.id &&
@@ -97,8 +94,11 @@ function ReviewPost({review}) {
                 }
                 <CardActions>
                     <IconButton>
-                        <FavoriteIcon onClick={addLike}/>
+                        <FavoriteIcon style={{color: 'red'}} onClick={addLike}/>
                     </IconButton>
+                    <div>
+                        {review.like_count} likes
+                    </div>
                 </CardActions>
             </Card>
         </div>

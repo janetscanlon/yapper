@@ -23,6 +23,7 @@ import AddReviewPage from '../AddReviewPage/AddReviewForm';
 import ReviewEditForm from '../ReviewFeedPage/ReviewEditForm';
 
 import './App.css';
+import { createMuiTheme } from '@mui/material';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
+
 
   return (
     <Router>
