@@ -1,4 +1,4 @@
-import React, {UseState} from 'react'
+import React, {UseState, useState} from 'react'
 import { useSelector } from 'react-redux'
 //! after backend stufff you should be able to hook 
 //! into the review info reducer and here and render hehe 
@@ -27,6 +27,9 @@ function ReviewPost({review}) {
     const history = useHistory()
     //hook into user reducer
     const user = useSelector(store => store.user)
+    
+    //declare state variable for the like button
+    const [liked, setLiked] = useState(false)
 
     const deleteReview = () => {
        if(review.like_count < 1){
@@ -56,7 +59,10 @@ function ReviewPost({review}) {
             payload: review.id
         })
 
-        
+        setLiked(true)
+
+
+    
     }
 
 
@@ -100,8 +106,8 @@ function ReviewPost({review}) {
                     </CardActions>
                 }
                 <CardActions>
-                    <IconButton onClick={addLike}>
-                        <FavoriteIcon style={{color: 'red'}} />
+                    <IconButton disabled = {liked} onClick={addLike}>
+                        <FavoriteIcon style={{ color: liked ? "red" : "grey" }} />
                     </IconButton>
                     <div>
                         {review.like_count} likes
