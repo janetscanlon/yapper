@@ -65,6 +65,7 @@ function* addLike(action) {
 function* deleteLikedReview(action){
     try{
         const response = yield axios.delete(`api/reviews/reviewid:/${action.payload}`)
+        yield put({type:'DELETE_REVIEW', payload: action.payload})
     } catch(error){
         console.log('error deleting review with likes:', error)
     }

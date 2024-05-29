@@ -150,10 +150,9 @@ router.delete(`/reviewid:/:id`, rejectUnauthenticated, (req,res) => {
   console.log('in delete reviews route')
 
   const sqlText = `DELETE FROM "review_likes" WHERE "review_id" = $1;
-                    DELETE FROM "reviews" WHERE id = $2;
                     `;
   
-  pool.query(sqlText, [req.params.id, req.params.id])
+  pool.query(sqlText, [req.params.id])
     .then((result) => {
       res.sendStatus(201)
     })
