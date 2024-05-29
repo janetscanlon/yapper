@@ -19,7 +19,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                   "reviews".rating,
                   COUNT("review_likes".id) AS "like_count"
                 FROM "reviews"
-                  INNER JOIN "review_likes"
+                  LEFT JOIN "review_likes"
                   ON "reviews"."id" = "review_likes"."review_id"
                   
                   GROUP BY "reviews".id
@@ -62,7 +62,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 //DELETE ROUTE 
 router.delete('/:id', rejectUnauthenticated, (req,res) => {
-  console.log('in delete reviews route')
 
   const sqlText = `DELETE FROM "reviews" 
                     WHERE id= $1;`;
@@ -146,4 +145,21 @@ router.post(`/likeid:/:id`, rejectUnauthenticated, (req,res) => {
     })
 })
 
+//DELETE ROUTE FOR REVIEW WITH LIKES 
+router.delete(`/reviewid:/:id`, rejectUnauthenticated, (req,res) => {
+  console.log('in delete reviews route')
+
+  const sqlText = `DELETE FROM "review_likes" WHERE "review_id" = $1;
+                    DELETE FROM "reviews" WHERE id = $2;
+                    `;
+  
+  pool.query(sqlText, [req.params.id, req.params.id])
+    .then((result) => {
+      res.sendStatus(201)
+    })
+    .catch((error) => {
+      console.log('Error in DELETE /:id reviews', error)
+      res.sendStatus(500)
+    })
+})
 module.exports = router;

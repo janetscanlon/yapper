@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 //mui components 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -18,6 +19,7 @@ function NewReviewPage () {
     
 
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const addReview = (event) => {
         event.preventDefault()
@@ -33,6 +35,7 @@ function NewReviewPage () {
             }
         })
         
+        history.push('/feed')
         
     }
 

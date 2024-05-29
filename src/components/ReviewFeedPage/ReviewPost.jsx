@@ -29,11 +29,18 @@ function ReviewPost({review}) {
     const user = useSelector(store => store.user)
 
     const deleteReview = () => {
-        console.log('delete clicked! Review id is:', review.id)
-        dispatch({
-            type: 'DELETE_REVIEW',
-            payload: review.id
-        })
+       if(review.like_count < 1){
+            dispatch({
+                type: 'DELETE_REVIEW',
+                payload: review.id
+            })
+        }else {
+            dispatch({
+                type: 'DELETE_REVIEW_WITH_LIKES',
+                payload: review.id
+            })
+
+        }
     }
 
     const editReview = () => {
@@ -93,8 +100,8 @@ function ReviewPost({review}) {
                     </CardActions>
                 }
                 <CardActions>
-                    <IconButton>
-                        <FavoriteIcon style={{color: 'red'}} onClick={addLike}/>
+                    <IconButton onClick={addLike}>
+                        <FavoriteIcon style={{color: 'red'}} />
                     </IconButton>
                     <div>
                         {review.like_count} likes

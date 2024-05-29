@@ -62,6 +62,14 @@ function* addLike(action) {
     }
 }
 
+function* deleteLikedReview(action){
+    try{
+        const response = yield axios.delete(`api/reviews/reviewid:/${action.payload}`)
+    } catch(error){
+        console.log('error deleting review with likes:', error)
+    }
+}
+
 
 function* reviewsSaga() {
    
@@ -70,6 +78,7 @@ function* reviewsSaga() {
     yield takeLatest('DELETE_REVIEW', deleteReview)
     //review likes! 
     yield takeLatest('ADD_LIKE', addLike)
+    yield takeLatest('DELETE_REVIEW_WITH_LIKES', deleteLikedReview)
 }
 
 export default reviewsSaga
