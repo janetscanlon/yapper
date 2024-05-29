@@ -21,6 +21,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import ReviewFeed from '../ReviewFeedPage/ReviewFeed';
 import AddReviewPage from '../AddReviewPage/AddReviewForm';
 import ReviewEditForm from '../ReviewFeedPage/ReviewEditForm';
+import SearchUsersPage from '../SearchUsersPage/SearchUsersPage';
 
 import './App.css';
 import { createMuiTheme } from '@mui/material';
@@ -57,6 +58,14 @@ function App() {
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:5173/user */}
 
+          {/* protected route for the ProfilePage */}
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/search"
+          >
+            <SearchUsersPage />
+          </ProtectedRoute>
 
           {/* protected route for the ProfilePage */}
           <ProtectedRoute

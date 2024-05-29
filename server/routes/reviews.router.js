@@ -8,7 +8,7 @@ const router = express.Router();
 //GET ROUTE
 router.get('/', rejectUnauthenticated, (req, res) => {
   const sqlText = `
-                  SELECT
+                SELECT
                   "reviews"."id",
                   "reviews"."user_id",
                   "reviews".book_author,
@@ -18,8 +18,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                   "reviews".review_timestamp,
                   "reviews".rating,
                   COUNT("review_likes".id) AS "like_count",
-                  "user".first_name AS "user_firstName",
-                  "user".pronouns AS "user_pronouns"
+                  "user".first_name AS "reviewAuthor_firstName",
+                  "user".pronouns AS "reviewAuthor_pronouns"
                 FROM "reviews"
                   LEFT JOIN "review_likes"
                   ON "reviews"."id" = "review_likes"."review_id"

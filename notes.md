@@ -20,4 +20,8 @@ user_id:
     3
 like_count:
     2
+user_firstName:
+    firstName
+user_pronouns: 
+    pronouns 
     }

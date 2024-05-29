@@ -36,6 +36,10 @@ function Nav() {
               Add Review
             </Link>
             
+            <Link className="navLink" to="/search">
+              Search Users
+            </Link>
+
            <LogOutButton className="navLink" />
           </>
         )}
