@@ -75,11 +75,11 @@ function ReviewPost({review}) {
                         Yap
                         </Avatar>
                         }
-                    action={
-                        <IconButton aria-label="settings">
-                            <MoreVertIcon />
-                        </IconButton>
-                        }
+                    // action={
+                    //     <IconButton aria-label="settings">
+                    //         <MoreVertIcon />
+                    //     </IconButton>
+                    //     }
                     titleTypographyProps={{variant:'h5'}}
                     title={review.reviewAuthor_firstName} 
                     subheader="is yapping!"
