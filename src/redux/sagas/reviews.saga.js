@@ -64,16 +64,6 @@ function* deleteLikedReview(action){
     }
 }
 
-function* fetchSearchUsers(action){
-    try{
-        const searchString = action.payload
-        const response = yield axios.get(`api/search/search?q=${searchString}`)
-        yield put({type:'SET_SEARCHED_USERS', payload: response.data})
-    } catch(error) {
-        console.log('error with searching users', error)
-    }
-}
-
 
 function* reviewsSaga() {
    
@@ -83,8 +73,7 @@ function* reviewsSaga() {
     //review likes! 
     yield takeLatest('ADD_LIKE', addLike)
     yield takeLatest('DELETE_REVIEW_WITH_LIKES', deleteLikedReview) 
-    //searched Users
-    yield takeLatest('SEARCH_USERS', fetchSearchUsers)
+   
 }
 
 export default reviewsSaga

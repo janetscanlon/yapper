@@ -26,8 +26,12 @@ router.get(`/search`, rejectUnauthenticated, (req,res) => {
   /**
    * POST route template
    */
-  router.post('/', (req, res) => {
-    // POST route code here
+  router.post('/:id', (req, res) => {
+    const sqlText = `
+                  INSERT INTO "follow"
+                    ("user_id", "followed_user_id")
+                      VALUES ($1, $2);`;
+    pool.query(sqlText, [req.user.id, req.params.id])
   });
   
   module.exports = router;

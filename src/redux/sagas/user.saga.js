@@ -24,8 +24,30 @@ function* fetchUser() {
   }
 }
 
+function* fetchSearchUsers(action){
+  try{
+      const searchString = action.payload
+      const response = yield axios.get(`api/search/search?q=${searchString}`)
+      yield put({type:'SET_SEARCHED_USERS', payload: response.data})
+  } catch(error) {
+      console.log('error with searching users', error)
+  }
+}
+
+function* addFollow(action){
+  try{
+    const response = yield axios.post(`api/search/${action.payload}`)
+    yield put({type: 'GET_REVIEWS'})
+  }catch(error) {
+    console.log('error adding follow', error)
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  //searched Users
+  yield takeLatest('SEARCH_USERS', fetchSearchUsers)
+  yield takeLatest('ADD_FOLLOW', addFollow)
 }
 
 export default userSaga;

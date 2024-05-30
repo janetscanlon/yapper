@@ -1,26 +1,30 @@
 import React, {useState} from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 //mui components 
 import { Typography } from '@mui/material'
-import Button from '@mui/material/Button'
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from '@mui/material/CardHeader'
 import Avatar from '@mui/material/Avatar'
 import IconButton from '@mui/material/IconButton'
-import FavoriteIcon from '@mui/icons-material/Favorite'
-import MoreVertIcon from "@mui/icons-material/MoreVert"
 import { AddCircleOutlineOutlined, AddCircle } from '@mui/icons-material';
+import CardActions from "@mui/material/CardActions"
 
 function UserList({user}){
+
+    const dispatch = useDispatch()
 
     //define state for conditional rendering 
     const [liked, setLiked] = useState(false)
 
 
     const handleFollowOnClick = () => {
+        dispatch({
+            type: 'ADD_FOLLOW',
+            payload: user.id
+        })
+
         setLiked(true)
     }
 

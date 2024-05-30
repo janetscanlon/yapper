@@ -29,7 +29,7 @@ function SearchUsersPage() {
     return(
         <Box sx={ {p: 4}}>
             <SearchIcon/>
-        <TextField onChange={(e) => setSearchedUsername(e.target.value)} placeholder='Search for username...' variant='outlined' />
+        <TextField onChange={(e) => setSearchedUsername(e.target.value)} placeholder='Search for username...' variant='filled' />
         <Button onClick= {SearchUsers} variant='contained'>Search</Button>
         
         
