@@ -167,20 +167,21 @@ router.delete(`/reviewid:/:id`, rejectUnauthenticated, (req,res) => {
 })
 
 
-//GET ROUTE for SEARCH USERS Feature 
-router.get(`/search`, rejectUnauthenticated, (req,res) => {
-  const sqlText = `
-                  SELECT * FROM "user"
-                    WHERE "username" ILIKE '%$1%';
-                    `;
-  pool.query(sqlText, [req.body])
-    .then((result) => {
-      res.send(result.rows)
-    })
-    .catch((error) => {
-      console.log('error in GET searched Usernames', error)
-      res.sendStatus(500)
-    })
-})
+// //GET ROUTE for SEARCH USERS Feature 
+// router.get(`api/reviews/search`, rejectUnauthenticated, (req,res) => {
+//   console.log('req.query.q is:', req.query.q)
+//   const sqlText = `
+//                   SELECT * FROM "user"
+//                     WHERE "username" ILIKE '%$1%';
+//                     `;
+//   pool.query(sqlText, [req.query.q])
+//     .then((result) => {
+//       res.send(result.rows)
+//     })
+//     .catch((error) => {
+//       console.log('error in GET searched Usernames', error)
+//       res.sendStatus(500)
+//     })
+// })
 
 module.exports = router;

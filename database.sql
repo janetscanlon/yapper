@@ -54,3 +54,27 @@ CREATE TABLE "review_likes"(
 	
 --STRETCH friends_list table
 
+SELECT
+	"reviews"."id",
+	"reviews"."user_id",
+	"reviews".book_author,
+	"reviews".book_title,
+	"reviews".genre,
+	"reviews".review_input,
+	"reviews".review_timestamp,
+	"reviews".rating,
+	COUNT("review_likes".id) AS "like_count",
+	"user".first_name AS "reviewAuthor_firstName",
+	"user".pronouns AS "reviewAuthor_pronouns"
+FROM "follow"
+	JOIN "reviews"
+	ON "follow".followed_user_id = "reviews".user_id
+	LEFT JOIN "review_likes"
+	ON "reviews"."id" = "review_likes"."review_id"
+	JOIN "user"
+	ON "reviews"."user_id" = "user"."id"
+WHERE "follow".user_id = 6
+	
+	
+	GROUP BY "reviews".id, "user".id
+	ORDER BY "reviews".id;

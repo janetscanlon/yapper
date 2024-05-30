@@ -66,8 +66,9 @@ function* deleteLikedReview(action){
 
 function* fetchSearchUsers(action){
     try{
-        const response = yield axios.get(`api/reviews/search`, action.payload)
-        yield put({type: 'SET_SEARCHED_USERS', payload: response.data})
+        const searchString = action.payload
+        const response = yield axios.get(`api/search/search?q=${searchString}`)
+        yield put({type:'SET_SEARCHED_USERS', payload: response.data})
     } catch(error) {
         console.log('error with searching users', error)
     }
