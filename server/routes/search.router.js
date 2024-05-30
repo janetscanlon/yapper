@@ -6,8 +6,13 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get(`/search`, rejectUnauthenticated, (req,res) => {
     console.log('req.query.q is:', req.query.q)
     const sqlText = `
-                    SELECT * FROM "user"
-                      WHERE "username" ILIKE ('%' || $1 || '%');
+                SELECT
+                    "user".id,
+                    "user".username,
+                    "user".first_name,
+                    "user".pronouns
+                FROM "user"
+                    WHERE "username" ILIKE ('%' || $1 || '%');
                       `;
     pool.query(sqlText, [req.query.q])
       .then((result) => {
