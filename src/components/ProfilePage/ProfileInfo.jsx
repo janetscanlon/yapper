@@ -46,7 +46,7 @@ function ProfileInfo() {
  
     }
     return(
-        <styledBox>
+        <StyledBox>
             <Container className='profileInfo'>
                 <Typography variant='h4'>{user.first_name}</Typography>
                 <Typography variant='caption'>{user.pronouns}</Typography>
@@ -61,7 +61,7 @@ function ProfileInfo() {
                 <Button onClick={toNewReviewPage} variant='contained'>New Review</Button>
                     <Typography>Your Friends</Typography>
             </Container>
-        </styledBox>
+        </StyledBox>
     )
 }
 
