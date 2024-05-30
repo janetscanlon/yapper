@@ -1,4 +1,4 @@
-import React, {UseState, useState} from 'react'
+import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 //! after backend stufff you should be able to hook 
 //! into the review info reducer and here and render hehe 
