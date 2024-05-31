@@ -102,8 +102,8 @@ function ReviewPost({review}) {
                 </CardContent>
                 {review.user_id === user.id &&
                     <CardActions>
-                        <Button onClick={deleteReview} variant='outlined' size="small">Delete</Button>
-                        <Button onClick={editReview}variant='outlined' size="small">Edit</Button>
+                        <Button sx={{color: 'grey'}} onClick={deleteReview} variant='outlined' size="small">Delete</Button>
+                        <Button sx={{color: 'grey'}} onClick={editReview}variant='outlined' size="small">Edit</Button>
                     </CardActions>
                 }
                 <CardActions>
