@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Button, TextField } from '@mui/material/'
+import { Box, Button, TextField, Container } from '@mui/material/'
 import SearchIcon from '@mui/icons-material/Search'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -27,7 +27,7 @@ function SearchUsersPage() {
 
 
     return(
-        <Box sx={ {p: 4}}>
+        <Box justifyContent={'center'} sx={{p: 4}}>
             <SearchIcon/>
         <TextField onChange={(e) => setSearchedUsername(e.target.value)} placeholder='Search for username...' variant='filled' />
         <Button onClick= {SearchUsers} variant='contained'>Search</Button>

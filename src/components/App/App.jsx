@@ -5,6 +5,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -24,7 +25,7 @@ import ReviewEditForm from '../ReviewFeedPage/ReviewEditForm';
 import SearchUsersPage from '../SearchUsersPage/SearchUsersPage';
 
 import './App.css';
-import { createMuiTheme } from '@mui/material';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -35,9 +36,22 @@ function App() {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
 
+  const theme = createTheme({
+    typography: {
+      button: {
+        fontFamily: 'inter', fontSize: "0.800rem", fontWeight: 450,
+      },
+    },
+    palette: {
+      primary:{
+        main: '#FFFFFF',
+      }
+    }
+  });
 
   return (
-    <Router>
+   <ThemeProvider theme={theme}>
+   <Router>
       <div>
         <Nav />
         <Switch>
@@ -152,6 +166,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 

@@ -15,8 +15,8 @@ function ProfileInfo() {
         const reviews = useSelector((store) => store.reviews)
         const history = useHistory()
         const dispatch = useDispatch()
-        const styledBox = styled('Box')({
-            textAlign: 'right'
+        const StyledBox = styled('Box')({
+            textAlign: 'center'
         })
 
     useEffect(() => {
@@ -49,7 +49,7 @@ function ProfileInfo() {
         <StyledBox>
             <Container className='profileInfo'>
                 <Typography variant='h4'>{user.first_name}</Typography>
-                <Typography variant='caption'>{user.pronouns}</Typography>
+                <Typography style={{color: 'dimgrey'}} variant='caption'>{user.pronouns}</Typography>
                 <Typography variant='subtitle2'>
                     You've written {numberOfReviews.length} reviews
                     </Typography>

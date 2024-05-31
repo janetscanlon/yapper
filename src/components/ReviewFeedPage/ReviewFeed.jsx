@@ -21,9 +21,6 @@ function ReviewFeed() {
         <h1> 
             Review Feed Page!
         </h1>
-        <h3>
-            Review Post component here
-        </h3>
         {reviews.map(review => {
             return(
             <ReviewPost key={review.id} review={review}/>
