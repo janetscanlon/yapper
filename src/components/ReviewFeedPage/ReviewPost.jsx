@@ -90,6 +90,7 @@ function ReviewPost({review}) {
                     </Typography>
                     <Typography variant='h6'>
                         {review.book_title} by {review.book_author}
+
                     </Typography>
                     <Typography variant='body2'>
                         rating: {review.rating}/10

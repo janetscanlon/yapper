@@ -7,30 +7,30 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 //GET ROUTE
 router.get('/', rejectUnauthenticated, (req, res) => {
   const sqlText = `
-                    SELECT
-                    "reviews"."id",
-                    "reviews"."user_id",
-                    "reviews".book_author,
-                    "reviews".book_title,
-                    "reviews".genre,
-                    "reviews".review_input,
-                    "reviews".review_timestamp,
-                    "reviews".rating,
-                    COUNT("review_likes".id) AS "like_count",
-                    "user".first_name AS "reviewAuthor_firstName",
-                    "user".pronouns AS "reviewAuthor_pronouns"
-                  FROM "follow"
-                    JOIN "reviews"
-                    ON "follow".followed_user_id = "reviews".user_id
-                    LEFT JOIN "review_likes"
-                    ON "reviews"."id" = "review_likes"."review_id"
-                    JOIN "user"
-                    ON "reviews"."user_id" = "user"."id"
-                  WHERE "follow".user_id = $1 
-                    
-                    
-                    GROUP BY "reviews".id, "user".id
-                    ORDER BY "reviews".id;
+                SELECT
+                  "reviews"."id",
+                  "reviews"."user_id",
+                  "reviews".book_author,
+                  "reviews".book_title,
+                  "reviews".genre,
+                  "reviews".review_input,
+                  "reviews".review_timestamp,
+                  "reviews".rating,
+                  COUNT("review_likes".id) AS "like_count",
+                  "user".first_name AS "reviewAuthor_firstName",
+                  "user".pronouns AS "reviewAuthor_pronouns"
+                FROM "reviews"
+                  LEFT JOIN "follow"
+                  ON "follow".followed_user_id = "reviews".user_id --this won't include users reviews 
+                  LEFT JOIN "review_likes"
+                  ON "reviews"."id" = "review_likes"."review_id"
+                  JOIN "user"
+                  ON "reviews"."user_id" = "user"."id"
+                WHERE "reviews"."user_id" = $1 OR "follow".user_id = $1
+                  
+                  
+                  GROUP BY "reviews".id, "user".id
+                  ORDER BY "reviews".id;
             `;
   pool.query(sqlText, [req.user.id])
     .then((result) => { res.send(result.rows) })
