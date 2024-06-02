@@ -69,6 +69,33 @@ function ReviewPost({review}) {
     return (
         <div style={{ margin: "10%", paddingRight: 0 }}>
             <Card sx={{minWidth: 300, p: 2, margin: 2, maxWidth: 700 }}>
+                
+            
+                <CardHeader
+                    avatar=
+                    { review.user_id === user.id ?
+                        <Avatar sx={{ bgcolor: 'darkolivegreen' }} aria-label="yapcircle">
+                        You
+                        </Avatar> : 
+                        <Avatar sx={{ bgcolor: '#534796' }} aria-label="yapcircle">
+                        Yap
+                        </Avatar> 
+                        }
+
+                    // action={
+                    //     <IconButton aria-label="settings">
+                    //         <MoreVertIcon />
+                    //     </IconButton>
+                    //     }
+
+                    
+                    titleTypographyProps={{variant:'h5'}}
+                    title={review.reviewAuthor_firstName} 
+                    subheader="is yapping!"
+                    
+                />
+
+                   {/* {review.user_id === user.id &&
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: 'darkolivegreen' }} aria-label="yapcircle">
@@ -80,10 +107,14 @@ function ReviewPost({review}) {
                     //         <MoreVertIcon />
                     //     </IconButton>
                     //     }
+
+                    
                     titleTypographyProps={{variant:'h5'}}
-                    title={review.reviewAuthor_firstName} 
-                    subheader="is yapping!"
-                />
+                    title= {user.username}
+                    subheader="are yapping!"
+                />} */}
+
+
                 <CardContent>
                     <Typography variant='caption'>
                         recently read:
