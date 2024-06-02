@@ -77,7 +77,7 @@ function ReviewPost({review}) {
                         <Avatar sx={{ bgcolor: 'darkolivegreen' }} aria-label="yapcircle">
                         You
                         </Avatar> : 
-                        <Avatar sx={{ bgcolor: '#534796' }} aria-label="yapcircle">
+                        <Avatar sx={{ bgcolor: 'darkolivegreen' }} aria-label="yapcircle">
                         Yap
                         </Avatar> 
                         }

@@ -40,6 +40,10 @@ function Nav() {
               Search Users
             </Link>
 
+            <Link className="navLink" to="/about">
+              About
+            </Link>
+
            <LogOutButton className="navLink" />
           </>
         )}
