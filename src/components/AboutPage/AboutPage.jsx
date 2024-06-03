@@ -5,7 +5,7 @@ import Avatar  from '@mui/material/Avatar'
 import avatar from './images/headshot.jpg'
 import qrCode from './images/QR.jpg'
 import { Typography, Box, Stack } from '@mui/material';
-import { QrCode } from '@mui/icons-material';
+import { QrCode, TypeSpecimenOutlined } from '@mui/icons-material';
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -29,12 +29,15 @@ function AboutPage() {
 
       </Box>
       <Box sx={{display: 'inline-flex'}}>
-       <Stack direction="row" spacing={2} alignContent='center'>
-          <Avatar alt="Janet Headshot" src={avatar}
-            sx={{width: 200, height: 250, alignContent: 'center',}} 
-            variant='circular'/>
-          <Avatar alt="QR Code" src={qrCode} variant='square' sx={{width:100, height:100, paddingTop:8}}/>
+      <Stack direction="column">
+        <Typography fontWeight={'bold'}>Janet Scanlon</Typography>
+        <Stack direction="row" spacing={2} alignContent='center'>
+            <Avatar alt="Janet Headshot" src={avatar}
+              sx={{width: 200, height: 250, alignContent: 'center',}} 
+              variant='circular'/>
+            <Avatar alt="QR Code" src={qrCode} variant='square' sx={{width:100, height:100, paddingTop:8}}/>
         </Stack>
+      </Stack>
      </Box>
     </div>
   );

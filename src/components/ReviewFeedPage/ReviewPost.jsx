@@ -68,6 +68,7 @@ function ReviewPost({review}) {
 
     return (
         <div style={{ margin: "10%", paddingRight: 0 }}>
+
             <Card sx={{minWidth: 300, p: 2, margin: 2, maxWidth: 700 }}>
                 
             
