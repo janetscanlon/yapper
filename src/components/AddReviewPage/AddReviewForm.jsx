@@ -39,6 +39,16 @@ function NewReviewPage () {
         
     }
 
+    // const autoFill = (event) => {
+    //     event.preventDefault()
+
+    //     setBookTitle('Belladonna')
+    //     setBookAuthor('Adalyne Grace')
+    //     setGenreInput('Fantasy Fiction')
+    //     setRatingInput('7')
+    //     setReviewInput('Loved this. Her and Death belong together lol.')
+    // }
+
     return(
         
         <FormControl>

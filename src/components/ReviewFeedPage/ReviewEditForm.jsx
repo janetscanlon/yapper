@@ -93,7 +93,7 @@ function ReviewEditForm () {
             <FormControl>
             <FormLabel>Edit Review</FormLabel>
             <Grid container direction={"column"} spacing={5}>
-                <Grid item>
+                <Grid item key={reviewToEdit.book_title}>
                     {reviewToEdit.book_title &&
                         <TextField 
                             onChange={handleBookTitleChange}
@@ -105,7 +105,7 @@ function ReviewEditForm () {
                         </TextField> 
                     }
                 </Grid>
-                <Grid item>
+                <Grid item key={reviewToEdit.book_author}>
                     {reviewToEdit.book_author &&
                         <TextField 
                             onChange={handleBookAuthorChange}
@@ -117,7 +117,7 @@ function ReviewEditForm () {
                         </TextField>
                     }
                 </Grid>
-                <Grid item>
+                <Grid item key={reviewToEdit.genre}>
                     {reviewToEdit.genre &&
                         <TextField
                             onChange={handleBookGenreChange}
@@ -129,7 +129,7 @@ function ReviewEditForm () {
                         </TextField>
                     }
                 </Grid>
-                <Grid item>
+                <Grid item key={reviewToEdit.rating}>
                     {reviewToEdit.rating &&
                         <TextField
                             onChange={handleBookRatingChange}
@@ -142,7 +142,7 @@ function ReviewEditForm () {
                         </TextField>
                     }
                 </Grid>
-                <Grid item>
+                <Grid item key={reviewToEdit.review_input}>
                     {reviewToEdit.review_input &&
                         <TextField
                             onChange={handleBookReviewInputChange}
