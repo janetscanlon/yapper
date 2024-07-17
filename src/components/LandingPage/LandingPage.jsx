@@ -30,7 +30,7 @@ function LandingPage() {
             <li> <b>Create an Account:</b> Sign up easily to start sharing your book reviews and connecting with fellow readers.</li>
             <li> <b>Post Reviews:</b> Share insightful reviews of your recent reads to help others discover their next favorite book.</li>
             <li> <b>Follow Friends:</b> Stay updated with your friends' reading journeys by following them, liking their reviews, and engaging in lively discussions.</li>
-            <li> <b>Interactive Features:</b>Engage with the community by liking your friends' reviews, and look forward to leaving comments on reviews—a new feature coming soon!</li>
+            <li> <b>Interactive Features:</b> Engage with the community by liking your friends' reviews, and look forward to leaving comments on reviews—a new feature coming soon!</li>
 
         </ul>
         </div>
